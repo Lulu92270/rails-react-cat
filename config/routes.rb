@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get "/score", to: 'pages#home'
 
   namespace :api, default: { format: :json } do
     namespace :v1 do

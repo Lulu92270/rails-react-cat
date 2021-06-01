@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_085018) do
   create_table "cats", force: :cascade do |t|
     t.string "id_from_atelier", null: false
     t.string "url", null: false
-    t.integer "score", default: 0, null: false
+    t.integer "score", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,26 @@
+.cat-card {
+  display: flex;
+  width: calc(50% - 100px);
+  height: 60vw;
+  margin: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  @media (max-width: 1080px) {
+    width: calc(50% - 50px);
+    margin: 25px;
+    height: 50vw;
+  }
+  img {
+    cursor: pointer;
+    width: 100px;  /* Or whatever */
+    height: 100px; /* Or whatever */
+    margin: auto;
+    min-width: calc(100%);
+    min-height: calc(100%);
+    border-radius: 5px;
+    &:hover {
+      outline: 10px solid pink;
+    }
+  }
+}

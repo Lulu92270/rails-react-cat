@@ -1,19 +1,5 @@
 .cats-container {
-  // width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
-
-}
-.cat-card {
-  width: calc(25% - 30px);
-  height: 45vh;
   margin: 15px;
-  background-size: cover;
-}
-@media (max-width: 1080px) {
-  .cat-card {
-    width: calc(50% - 30px);
-    height: 80vh;
-  }
 }

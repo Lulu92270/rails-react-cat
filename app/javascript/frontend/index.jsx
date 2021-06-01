@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import App from './components/App.jsx';
-import Nav from './components/Nav.jsx';
 import axios from 'axios';
 import './index.scss';
 
+import App from './components/App.jsx';
+import Nav from './components/Nav.jsx';
+import Footer from './components/Footer.jsx';
+import Score from './components/Score.jsx';
+
 const Index = () => {
   const [catList, setCatList] = useState();
-  // const url = "https://latelier.co/data/cats.json"
-  const url = "/api/v1/cats"
+  const url = "/api/v1/cats";
 
   useEffect(() => {
     axios.get(url, { withCredentials: true })
@@ -24,7 +26,9 @@ const Index = () => {
           <Nav />
           <Switch>
             <Route path="/" exact render={props => (<App {...props} catList={catList} />)} />
+            <Route path="/score" render={props => (<Score {...props} catList={catList} />)} />
           </Switch>
+          <Footer />
         </div>
       }
     </Router>
