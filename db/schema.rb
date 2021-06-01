@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_06_01_085018) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cats", force: :cascade do |t|
     t.string "id_from_atelier", null: false
     t.string "url", null: false
