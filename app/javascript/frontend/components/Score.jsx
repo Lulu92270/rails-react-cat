@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/Score.scss';
 
 const Score = ({catList}) => {
   const listSize = 9;
-  const bestCatList = catList.sort((a, b) => (a.score < b.score) ? 1 : -1).slice(0, listSize)
+  const bestCatList = catList.sort((a, b) => (a.score < b.score) ? 1 : -1).slice(0, listSize);
 
   return (
     <div className="score-main">

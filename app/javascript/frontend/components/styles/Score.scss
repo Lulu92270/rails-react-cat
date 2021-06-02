@@ -4,7 +4,9 @@
   p {
     text-align: center;
     margin: auto;
-    font-size: 2vw;
+    font-size: 2.5vw;
+    color: rgb(253, 77, 107);
+    text-shadow: 2px 2px 0px black;
   }
   .score {
     display: flex;
@@ -42,6 +44,8 @@
           top: 50%;
           transform: translate(-50%, -50%);
           font-size: 2vw;
+          color: black;
+          text-shadow: none;
         }
       }
     }

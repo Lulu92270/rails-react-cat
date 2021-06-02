@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import './styles/App.scss';
 import { twoRandomItemsFromArray } from '../functions/twoRandomItemsFromArray';
 import axios from 'axios';
+import useSound from 'use-sound';
+import catSound from '../sound/catMeow.mp3';
 
 import Cat from './Cat.jsx'
 
-const App = ({catList}) => {
+const App = ({catList, updateCatList}) => {
   const [twoCats, setTwoCats] = useState(twoRandomItemsFromArray(catList));
+  const [play] = useSound(catSound);
 
   const handleClick = (cat) => {
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -22,6 +25,8 @@ const App = ({catList}) => {
         console.log("Cat Updated", response, "His score is now", response.data.score)
         setTwoCats(false) // Required to trigger spring animation
         setTwoCats(twoRandomItemsFromArray(catList))
+        updateCatList(cat) // Update catList in Index.jsx
+        play()
       })
   }
 
@@ -31,7 +36,11 @@ const App = ({catList}) => {
         {twoCats && 
           twoCats.map((cat, index) => {
             return (
-              <Cat key={index} image={cat.url} clicked={() => handleClick(cat)} />
+              <Cat 
+                key={index} 
+                image={cat.url} 
+                clicked={() => handleClick(cat)}
+              />
             );
           })
         }

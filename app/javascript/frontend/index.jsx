@@ -13,19 +13,27 @@ const Index = () => {
   const [catList, setCatList] = useState();
   const url = "/api/v1/cats";
 
-  useEffect(() => {
+  const fetchCats = () => {
     axios.get(url, { withCredentials: true })
-         .then(response => setCatList(response.data))
+         .then(response => {setCatList(response.data), console.log("Cat List Fetched :)")})
          .catch(error => console.log("Check fetch cat error",error))
+  }
+  useEffect(() => {
+    fetchCats()
   }, []);
+
+  const handleUpdate = (cat) => {
+    catList.find(object => object.id === cat.id).score++;
+    setCatList(catList)
+  }
   
   return (
     <Router>
       {catList &&
-        <div>
+        <div className='cat-background'>
           <Nav />
           <Switch>
-            <Route path="/" exact render={props => (<App {...props} catList={catList} />)} />
+            <Route path="/" exact render={props => (<App {...props} catList={catList} updateCatList={handleUpdate} />)} />
             <Route path="/score" render={props => (<Score {...props} catList={catList} />)} />
           </Switch>
           <Footer />
