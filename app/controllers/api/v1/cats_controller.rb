@@ -1,4 +1,6 @@
 class Api::V1::CatsController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  
   def index
     cats = Cat.all
     render json: cats
@@ -11,7 +13,7 @@ class Api::V1::CatsController < ActionController::Base
 
   def update
     cat = Cat.find(params[:id])
-    cat.update(cat_params)
+    cat.update(score: cat.score + 1)
     render json: cat
   end
 

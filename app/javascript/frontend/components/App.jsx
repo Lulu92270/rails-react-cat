@@ -13,10 +13,8 @@ const App = ({catList, updateCatList}) => {
 
   const handleClick = (cat) => {
     const token = document.querySelector('meta[name="csrf-token"]').content;
-    const newScore = cat.score + 1
     axios.patch(
       `/api/v1/cats/${cat.id}`,
-      { score: newScore },
       { headers: {
           "X-CSRF-Token": token,
           "Content-Type": "application/json"
